@@ -2,42 +2,47 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Python on GitHub Pages</title>
-    <!-- Load PyScript assets from the CDN -->
-    <link rel="stylesheet" href="https://pyscript.net" />
-    <script type="module" src="https://pyscript.net"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Mario's Madness V2 - Native Web Player</title>
+    <style>
+        /* Configure a completely black canvas that dynamically fits any window size */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #000;
+        }
+
+        #openfl-content {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        canvas {
+            image-rendering: pixelated;
+            image-rendering: crisp-edges;
+            box-shadow: 0px 0px 20px rgba(255, 0, 0, 0.3);
+        }
+    </style>
+    
+    <!-- Step 2 will require you to compile/add these standard web engine hooks -->
+    <script type="text/javascript" src="./manifest/mariosmadness.js"></script>
 </head>
 <body>
 
-    <h1>My Python Script Output:</h1>
-    <!-- Write your Python code directly here -->
-    <script type="py">
-        import sys
-        print("Hello from Python running in the browser!")
-        print(f"Python Version: {sys.version}")
-    </script>
+    <!-- This is the direct hook where the compiled Haxe/WebAssembly engine embeds -->
+    <div id="openfl-content"></div>
 
-</body>
-</html>
-
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Lua on GitHub Pages</title>
-    <!-- Load Fengari-Web from a CDN -->
-    <script src="https://cloudflare.com" type="text/javascript"></script>
-</head>
-<body>
-
-    <h1>My Lua Script Output:</h1>
-    <!-- Write your Lua code here. The browser console will capture print() calls -->
-    <script type="application/lua">
-        print("Hello from Lua running in the browser!")
-        
-        local tbl = { "Apple", "Banana", "Cherry" }
-        for index, value in ipairs(tbl) do
-            print(index .. ": " .. value)
-        end
+    <script type="text/javascript">
+        // Direct execution call to start the game loop natively inside the browser window
+        lime.embed ("Mario", "openfl-content", 1280, 720, { 
+            parameters: {} 
+        });
     </script>
 
 </body>
