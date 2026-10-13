@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Python on GitHub Pages</title>
+    <!-- Load PyScript assets from the CDN -->
+    <link rel="stylesheet" href="https://pyscript.net" />
+    <script type="module" src="https://pyscript.net"></script>
+</head>
+<body>
+
+    <h1>My Python Script Output:</h1>
+    <!-- Write your Python code directly here -->
+    <script type="py">
+        import sys
+        print("Hello from Python running in the browser!")
+        print(f"Python Version: {sys.version}")
+    </script>
+
+</body>
+</html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lua on GitHub Pages</title>
+    <!-- Load Fengari-Web from a CDN -->
+    <script src="https://cloudflare.com" type="text/javascript"></script>
+</head>
+<body>
+
+    <h1>My Lua Script Output:</h1>
+    <!-- Write your Lua code here. The browser console will capture print() calls -->
+    <script type="application/lua">
+        print("Hello from Lua running in the browser!")
+        
+        local tbl = { "Apple", "Banana", "Cherry" }
+        for index, value in ipairs(tbl) do
+            print(index .. ": " .. value)
+        end
+    </script>
+
+</body>
+</html>
